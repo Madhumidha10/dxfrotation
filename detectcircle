@@ -1,0 +1,46 @@
+   Dim p As System.Drawing.Point
+
+        If edgeDetected Then
+            Dim ind = Apc.EdgeDetectedUtil.ClosestPtToPtList(New AForge.Point(e.X, e.Y), edgespo)
+
+            p = New System.Drawing.Point(edgespo(ind).X, edgespo(ind).Y)
+        Else
+            p = New System.Drawing.Point(e.X, e.Y)
+        End If
+
+        If (Check_circle = True) Then
+            Apoint = New System.Drawing.Point(e.X + 35, e.Y + 35)
+            Dim ind = Apc.EdgeDetectedUtil.ClosestPtToPtList(New AForge.Point(Apoint.X, Apoint.Y), edgespo)
+            Apoint = New System.Drawing.Point(edgespo(ind).X, edgespo(ind).Y)
+            Bpoint = New System.Drawing.Point(e.X - 70, e.Y + 70)
+            ind = Apc.EdgeDetectedUtil.ClosestPtToPtList(New AForge.Point(Bpoint.X, Bpoint.Y), edgespo)
+            Bpoint = New System.Drawing.Point(edgespo(ind).X, edgespo(ind).Y)
+            Cpoint = New System.Drawing.Point(e.X + 105, e.Y - 105)
+            ind = Apc.EdgeDetectedUtil.ClosestPtToPtList(New AForge.Point(Cpoint.X, Cpoint.Y), edgespo)
+            Cpoint = New System.Drawing.Point(edgespo(ind).X, edgespo(ind).Y)
+            ThreepointCircle()
+            Check_circle = False
+            ' Rotate around the origin.
+
+            ' StartPoint = p
+            ' LastPoint = New System.Drawing.Point(p.X + 1, p.Y + 1)
+
+            '  Bpoint = New System.Drawing.Point(e.X - 50, e.Y - 50)
+            '  ind = Apc.EdgeDetectedUtil.ClosestPtToPtList(New AForge.Point(Bpoint.X, Bpoint.Y), edgespo)
+            '  LastPoint = New System.Drawing.Point(edgespo(ind).X, edgespo(ind).Y)
+            'TwopointCircle()
+        End If
+        If (like_circle = True) Then
+
+            Apoint = New System.Drawing.Point(e.X + 20, e.Y + 20)
+            Dim ind = Apc.EdgeDetectedUtil.ClosestPtToPtList(New AForge.Point(Apoint.X, Apoint.Y), edgespo)
+            Apoint = New System.Drawing.Point(edgespo(ind).X, edgespo(ind).Y)
+            Bpoint = New System.Drawing.Point(e.X - 20, e.Y + 20)
+            ind = Apc.EdgeDetectedUtil.ClosestPtToPtList(New AForge.Point(Bpoint.X, Bpoint.Y), edgespo)
+            Bpoint = New System.Drawing.Point(edgespo(ind).X, edgespo(ind).Y)
+            Cpoint = New System.Drawing.Point(e.X + 20, e.Y - 20)
+            ind = Apc.EdgeDetectedUtil.ClosestPtToPtList(New AForge.Point(Cpoint.X, Cpoint.Y), edgespo)
+            Cpoint = New System.Drawing.Point(edgespo(ind).X, edgespo(ind).Y)
+            ThreepointCircle()
+            like_circle = False
+        End If
